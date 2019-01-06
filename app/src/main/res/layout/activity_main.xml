@@ -12,7 +12,7 @@
         android:id="@+id/searchbar"
         android:layout_width="match_parent"
         android:layout_height="47dp"
-        android:background="">
+        android:elevation="@dimen/elevation">
 
     </RelativeLayout>
 
@@ -21,6 +21,6 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:orientation="horizontal"
-        android:background=""></LinearLayout>
+        android:elevation="@dimen/elevation"></LinearLayout>
 
 </LinearLayout>

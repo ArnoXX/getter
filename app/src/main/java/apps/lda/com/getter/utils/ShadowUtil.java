@@ -17,7 +17,7 @@ public class ShadowUtil {
                                                         @ColorRes int shadowColor,
                                                         @DimenRes int elevation,
                                                         int shadowGravity) {
-        float cornerRadiusValue = view.getContext().getResources().getDimension(cornerRadius);
+        float cornerRadiusValue = view.getContext().getResources().getDimension (cornerRadius);
         int elevationValue = (int) view.getContext().getResources().getDimension(elevation);
         int shadowColorValue = ContextCompat.getColor(view.getContext(),shadowColor);
         int backgroundColorValue = ContextCompat.getColor(view.getContext(),backgroundColor);

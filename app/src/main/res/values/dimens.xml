@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="borderRadius">3</dimen>
+    <dimen name="elevation">2</dimen>
+    <dimen name="zeroBorderRadius">0</dimen>
+</resources>

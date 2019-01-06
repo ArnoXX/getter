@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/colorAccent">
 
 
     <RelativeLayout
         android:id="@+id/searchbar"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
-        android:elevation="@dimen/elevation">
+        android:layout_height="47dp">
 
     </RelativeLayout>
 
@@ -20,7 +20,6 @@
         android:id="@+id/breadcrumbs"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:orientation="horizontal"
-        android:elevation="@dimen/elevation"></LinearLayout>
+        android:orientation="horizontal"></LinearLayout>
 
 </LinearLayout>

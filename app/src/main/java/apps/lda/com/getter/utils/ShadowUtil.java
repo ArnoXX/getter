@@ -17,7 +17,7 @@ public class ShadowUtil {
                                                         @ColorRes int shadowColor,
                                                         @DimenRes int elevation,
                                                         int shadowGravity) {
-        float cornerRadiusValue = view.getContext().getResources().getDimension (cornerRadius);
+        float cornerRadiusValue = view.getContext().getResources().getDimension(cornerRadius);
         int elevationValue = (int) view.getContext().getResources().getDimension(elevation);
         int shadowColorValue = ContextCompat.getColor(view.getContext(),shadowColor);
         int backgroundColorValue = ContextCompat.getColor(view.getContext(),backgroundColor);
@@ -31,25 +31,17 @@ public class ShadowUtil {
         backgroundPaint.setShadowLayer(cornerRadiusValue, 0, 0, 0);
 
         Rect shapeDrawablePadding = new Rect();
-        shapeDrawablePadding.left = elevationValue;
-        shapeDrawablePadding.right = elevationValue;
 
         int DY;
         switch (shadowGravity) {
             case Gravity.CENTER:
-                shapeDrawablePadding.top = elevationValue;
-                shapeDrawablePadding.bottom = elevationValue;
                 DY = 0;
                 break;
             case Gravity.TOP:
-                shapeDrawablePadding.top = elevationValue*2;
-                shapeDrawablePadding.bottom = elevationValue;
                 DY = -1*elevationValue/3;
                 break;
             default:
             case Gravity.BOTTOM:
-                shapeDrawablePadding.top = elevationValue;
-                shapeDrawablePadding.bottom = elevationValue*2;
                 DY = elevationValue/3;
                 break;
         }
@@ -65,8 +57,7 @@ public class ShadowUtil {
         shapeDrawable.setShape(new RoundRectShape(outerRadius, null, null));
 
         LayerDrawable drawable = new LayerDrawable(new Drawable[]{shapeDrawable});
-        drawable.setLayerInset(0, elevationValue, elevationValue*2, elevationValue, elevationValue*2);
-
+        drawable.setLayerInset(0, 0,0,0, elevationValue);
         return drawable;
 
     }

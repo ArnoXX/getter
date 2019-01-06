@@ -8,5 +8,11 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="fileExploring" parent="AppTheme">
+        <item name="colorWhite">@color/white</item>
+        <item name="colorDark">@color/dark</item>
+        <item name="colorGrey">@color/grey</item>
+        <item name="colorDarkGrey">@color/darkgrey</item>
+    </style>
 
 </resources>

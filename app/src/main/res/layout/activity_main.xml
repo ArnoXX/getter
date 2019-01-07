@@ -12,9 +12,9 @@
         android:id="@+id/searchbar"
         android:layout_width="match_parent"
         android:layout_height="47dp"
+        android:background="@color/darkgrey"
         android:elevation="@dimen/elevation"
-        android:translationZ="1dp"
-        android:background="@color/darkgrey">
+        android:translationZ="1dp">
 
     </RelativeLayout>
 
@@ -22,8 +22,23 @@
         android:id="@+id/breadcrumbs"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:orientation="horizontal"
+        android:background="@color/grey"
         android:elevation="@dimen/elevation"
-        android:background="@color/grey"></LinearLayout>
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/mainScroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/mainScrollLines"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
 
 </LinearLayout>

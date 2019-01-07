@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    // borders
     <dimen name="borderRadius">3dp</dimen>
-    <dimen name="elevation">2dp</dimen>
     <dimen name="zeroBorderRadius">0dp</dimen>
+
+    // elevation
+    <dimen name="elevation">2dp</dimen>
+
+    //margins
+    <dimen name="explorerElementViewTopMargin">10dp</dimen>
+    <dimen name="explorerElementViewBottomMargin">0dp</dimen>
+    <dimen name="explorerElementViewRightMargin">16dp</dimen>
+    <dimen name="explorerElementViewLeftMargin">13dp</dimen>
+
 </resources>

@@ -11,6 +11,7 @@
     //margins
     <dimen name="explorerElementViewTopMargin">10dp</dimen>
     <dimen name="explorerElementViewBottomMargin">0dp</dimen>
+    <dimen name="explorerElementViewBottomMargin_Last">10dp</dimen>
     <dimen name="explorerElementViewRightMargin">16dp</dimen>
     <dimen name="explorerElementViewLeftMargin">13dp</dimen>
 

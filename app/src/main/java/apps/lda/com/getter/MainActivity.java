@@ -14,11 +14,10 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import java.util.HashMap;
+
 import apps.lda.com.getter.customViews.ExplorerElement;
-import io.github.inflationx.calligraphy3.CalligraphyConfig;
-import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
-import io.github.inflationx.viewpump.ViewPump;
-import io.github.inflationx.viewpump.ViewPumpContextWrapper;
+import apps.lda.com.getter.customViews.ExplorerElementIcon;
 
 public class MainActivity extends AppCompatActivity {
     public static int fromDpToPx(float dp){
@@ -32,25 +31,34 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView (R.layout.activity_main);
         // TODO complete this shit
+        HashMap<String, ? extends ViewGroup.LayoutParams> params_set = new HashMap<> (); // TODO organize params hash table
+
         ScrollView mainScroll = findViewById (R.id.mainScroll);
         LinearLayout mainScrollLayout = findViewById (R.id.mainScrollLines);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         LinearLayout.LayoutParams last_params = new LinearLayout.LayoutParams (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams icon_params = new RelativeLayout.LayoutParams (fromDpToPx (getResources ().getDimension (R.dimen.explorerElementIconWidth)), fromDpToPx (getResources ().getDimension (R.dimen.explorerElementIconHeight)));
+        RelativeLayout.LayoutParams label_params = new RelativeLayout.LayoutParams (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        params1.addRule (RelativeLayout.CENTER_IN_PARENT);
         params.setMargins (fromDpToPx (getResources ().getDimension (R.dimen.explorerElementViewLeftMargin)), fromDpToPx (getResources ().getDimension (R.dimen.explorerElementViewTopMargin)), fromDpToPx (getResources ().getDimension (R.dimen.explorerElementViewRightMargin)), fromDpToPx (getResources ().getDimension (R.dimen.explorerElementViewBottomMargin)));
         last_params.setMargins (fromDpToPx (getResources ().getDimension (R.dimen.explorerElementViewLeftMargin)), fromDpToPx (getResources ().getDimension (R.dimen.explorerElementViewTopMargin)), fromDpToPx (getResources ().getDimension (R.dimen.explorerElementViewRightMargin)), fromDpToPx (getResources ().getDimension (R.dimen.explorerElementViewBottomMargin_Last)));
+        icon_params.addRule (RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
+        label_params.addRule (RelativeLayout.CENTER_VERTICAL, RelativeLayout.TRUE);
+        label_params.addRule (RelativeLayout.END_OF, R.id.explorer_element_icon);
+        label_params.setMarginStart (fromDpToPx (getResources ().getDimension (R.dimen.explorerElementLabelMarginStart)));
+        icon_params.setMargins(fromDpToPx (getResources ().getDimension (R.dimen.explorerElementIconLeftMargin)), fromDpToPx (getResources ().getDimension (R.dimen.explorerElementIconTopMargin)), fromDpToPx (getResources ().getDimension (R.dimen.explorerElementIconRightMargin)), fromDpToPx (getResources ().getDimension (R.dimen.explorerElementIconBottomMargin)));
 
-        for(int i = 0; i < 20; i++){
-            TextView txt  = new TextView (this);
-            txt.setText (String.format ("%d, %d, %d", i, params.bottomMargin, params.topMargin));
-            Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/roboto_thin.ttf");
-            txt.setTypeface (custom_font);
-            txt.setLayoutParams (params1);
-            View[] children = {txt};
-            mainScrollLayout.addView (new ExplorerElement (this, i == 19 ? last_params : params, getDrawable (R.drawable.explorer_element_view_bg), fromDpToPx (getResources ().getDimension (R.dimen.elevation)), children));
+        for(int i = 0; i < 40; i++){
+            ExplorerElementIcon icon = new ExplorerElementIcon (this, icon_params, getDrawable (R.drawable.folder_drawable));
+            icon.setId (R.id.explorer_element_icon);
+            TextView txt = new TextView (this);
+            txt.setText (R.string.app_name);
+            txt.setTypeface (Typeface.createFromAsset (getAssets(),
+                    "fonts/roboto_thin.ttf"));
+            txt.setLayoutParams (label_params);
+            View[] children = {icon, txt};
+            mainScrollLayout.addView (new ExplorerElement (this, i == 39 ? last_params : params, getDrawable (R.drawable.explorer_element_view_bg), fromDpToPx (getResources ().getDimension (R.dimen.elevation)), children));
         }
     }
 }

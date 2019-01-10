@@ -1,1 +1,1 @@
-include ':app', ':viewpump-1.0.0', ':calligraphy3-3.0.0'
+include ':app'

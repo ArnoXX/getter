@@ -2,10 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="331dp" android:layout_height="30dp"
+    android:layout_width="331dp" android:layout_height="wrap_content"
     android:background="@drawable/explorer_element_view_bg"
     android:elevation="@dimen/elevation"
-    android:layout_marginStart="16dp">
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="10dp">
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -13,14 +14,20 @@
         android:layout_height="20dp"
         android:layout_centerVertical="true"
         android:layout_marginStart="14dp"
-        app:srcCompat="@drawable/folder_drawable" />
+        app:srcCompat="@drawable/folder_drawable"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:foregroundGravity="center"/>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="DCMI"
         android:layout_toEndOf="@id/imageButton"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="7dp" />
+        android:layout_marginLeft="7dp"
+        android:textColor="@color/dark"/>
+
+
 </RelativeLayout>

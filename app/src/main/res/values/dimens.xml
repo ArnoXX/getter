@@ -22,8 +22,20 @@
 
     <dimen name="explorerElementLabelMarginStart">7dp</dimen>
 
+    <dimen name="explorerMenuIconMarginStart">12dp</dimen>
+
+    <dimen name="explorerBreadcrumbs">17dp</dimen>
+
+    <dimen name="fabMargin">16dp</dimen>
+
     // sizes
-    <dimen name="explorerElementIconWidth">20dp</dimen>
-    <dimen name="explorerElementIconHeight">20dp</dimen>
+    <dimen name="explorerElementIconWidth">22dp</dimen>
+    <dimen name="explorerElementIconHeight">22dp</dimen>
+
+    <dimen name="explorerMenuIconWidth">24dp</dimen>
+    <dimen name="explorerMenuIconHeight">24dp</dimen>
+
+    // fontsize
+    <dimen name="robotoThinFontSize">14dp</dimen>
 
 </resources>

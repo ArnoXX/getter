@@ -1,9 +1,13 @@
 package apps.lda.com.getter.customViews;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatImageButton;
+import androidx.appcompat.widget.AppCompatImageButton;
 import android.view.ViewGroup;
+
+import apps.lda.com.getter.R;
 
 public class ExplorerElementIcon extends AppCompatImageButton {
     private ViewGroup.LayoutParams params;

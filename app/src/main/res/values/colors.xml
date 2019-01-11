@@ -8,4 +8,5 @@
     <color name="grey">#fdfdfd</color>
     <color name="darkgrey">#e6e6e6</color>
     <color name="shadow">#44646464</color>
+    <color name="transparent">#00000000</color>
 </resources>

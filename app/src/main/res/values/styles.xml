@@ -6,7 +6,7 @@
         <item name="floatingActionButtonStyle">@style/Widget.Design.FloatingActionButton</item>
         <item name="colorPrimary">@color/darkgrey</item>
         <item name="colorPrimaryDark">@color/darkgrey</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/darkgrey</item>
     </style>
 
 </resources>

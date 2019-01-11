@@ -17,6 +17,14 @@
         android:elevation="@dimen/elevation"
         android:translationZ="1dp">
 
+        <ImageButton
+            android:id="@+id/menu"
+            android:layout_width="@dimen/explorerMenuIconWidth"
+            android:layout_height="@dimen/explorerMenuIconHeight"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/explorerMenuIconMarginStart"
+            android:background="@color/transparent"
+            app:srcCompat="@drawable/ic_menu" />
     </RelativeLayout>
 
     <LinearLayout
@@ -25,22 +33,47 @@
         android:layout_height="30dp"
         android:background="@color/grey"
         android:elevation="@dimen/elevation"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
+        <TextView
+            android:id="@+id/breadcrumbsLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/explorerBreadcrumbs"
+            android:text="/"
+            android:textColor="@color/dark" />
     </LinearLayout>
 
-    <ScrollView
-        android:id="@+id/mainScroll"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
-
-        <LinearLayout
-            android:id="@+id/mainScrollLines"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:id="@+id/mainScroll"
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:id="@+id/mainScrollLines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+            </LinearLayout>
+        </ScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fabMargin"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_plus"
+            app:fabSize="normal" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
 </LinearLayout>

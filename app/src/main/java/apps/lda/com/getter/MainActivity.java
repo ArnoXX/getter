@@ -2,8 +2,10 @@ package apps.lda.com.getter;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -32,7 +34,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView (R.layout.activity_main);
         // TODO complete this shit
         HashMap<String, ? extends ViewGroup.LayoutParams> params_set = new HashMap<> (); // TODO organize params hash table
+        Typeface roboto_thin = Typeface.createFromAsset (getAssets(),
+                "fonts/roboto_thin.ttf");
 
+
+        // list of dirs and files
         ScrollView mainScroll = findViewById (R.id.mainScroll);
         LinearLayout mainScrollLayout = findViewById (R.id.mainScrollLines);
 
@@ -54,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
             icon.setId (R.id.explorer_element_icon);
             TextView txt = new TextView (this);
             txt.setText (R.string.app_name);
-            txt.setTypeface (Typeface.createFromAsset (getAssets(),
-                    "fonts/roboto_thin.ttf"));
+            txt.setTextColor (getColor (R.color.dark));
+            txt.setTypeface (roboto_thin);
             txt.setLayoutParams (label_params);
             View[] children = {icon, txt};
             mainScrollLayout.addView (new ExplorerElement (this, i == 39 ? last_params : params, getDrawable (R.drawable.explorer_element_view_bg), fromDpToPx (getResources ().getDimension (R.dimen.elevation)), children));

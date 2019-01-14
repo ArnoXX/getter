@@ -11,15 +11,18 @@ public class ExplorerElement extends RelativeLayout {
     private Drawable bg;
     private int elevation;
     private View[] children;
-    public ExplorerElement(Context context, ViewGroup.LayoutParams params, Drawable bg, int elevation, View[] children) {
+    private int id;
+    public ExplorerElement(Context context, ViewGroup.LayoutParams params, Drawable bg, int elevation, View[] children, int id) {
         super (context);
         this.params = params;
         this.bg = bg;
         this.elevation = elevation;
         this.children = children;
+        this.id = id;
         init ();
     }
     private void init(){
+        this.setId (this.id);
         this.setLayoutParams (this.params);
         this.setBackground (this.bg);
         this.setElevation (this.elevation);

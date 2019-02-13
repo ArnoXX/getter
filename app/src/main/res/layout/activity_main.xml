@@ -9,23 +9,23 @@
     tools:context=".MainActivity">
 
 
-    <RelativeLayout
-        android:id="@+id/searchbar"
-        android:layout_width="match_parent"
-        android:layout_height="47dp"
-        android:background="@color/darkgrey"
-        android:elevation="@dimen/elevation"
-        android:translationZ="1dp">
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/searchbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="47dp"-->
+        <!--android:background="@color/darkgrey"-->
+        <!--android:elevation="@dimen/elevation"-->
+        <!--android:translationZ="1dp">-->
 
-        <ImageButton
-            android:id="@+id/menu"
-            android:layout_width="@dimen/explorerMenuIconWidth"
-            android:layout_height="@dimen/explorerMenuIconHeight"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/explorerMenuIconMarginStart"
-            android:background="@color/transparent"
-            app:srcCompat="@drawable/ic_menu" />
-    </RelativeLayout>
+        <!--<ImageButton-->
+            <!--android:id="@+id/menu"-->
+            <!--android:layout_width="@dimen/explorerMenuIconWidth"-->
+            <!--android:layout_height="@dimen/explorerMenuIconHeight"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginStart="@dimen/explorerMenuIconMarginStart"-->
+            <!--android:background="@color/transparent"-->
+            <!--app:srcCompat="@drawable/ic_menu" />-->
+    <!--</RelativeLayout>-->
 
     <LinearLayout
         android:id="@+id/breadcrumbs"
@@ -43,43 +43,87 @@
             android:layout_marginStart="@dimen/explorerBreadcrumbs"
             android:text="/"
             android:textColor="@color/dark" />
-    </LinearLayout>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/fab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <!--<ScrollView-->
-        <!--android:id="@+id/mainScroll"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:fillViewport="true">-->
-
-        <!--<LinearLayout-->
-        <!--android:id="@+id/mainScrollLines"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="vertical" >-->
-
-        <!--</LinearLayout>-->
-        <!--</ScrollView>-->
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/pager"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
+        <TextView
+            android:id="@+id/breadcrumbsLine2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fabMargin"
-            android:clickable="true"
-            app:fabSize="normal"
-            app:srcCompat="@drawable/ic_plus" />
+            android:layout_marginStart="@dimen/explorerBreadcrumbs"
+            android:text="/"
+            android:textColor="@color/dark" />
+    </LinearLayout>
+    <apps.lda.com.getter.customViews.ExplorerPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <!--<androidx.coordinatorlayout.widget.CoordinatorLayout-->
+        <!--android:id="@+id/fab_layout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+        <!--&lt;!&ndash;<ScrollView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/mainScroll"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:fillViewport="true">&ndash;&gt;-->
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/mainScrollLines"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:orientation="vertical" >&ndash;&gt;-->
+
+        <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+        <!--&lt;!&ndash;</ScrollView>&ndash;&gt;-->
+
+
+        <!--<com.google.android.material.floatingactionbutton.FloatingActionButton-->
+            <!--android:id="@+id/fab4"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="@dimen/subFabMargin"-->
+            <!--android:clickable="true"-->
+            <!--app:fabSize="mini"-->
+            <!--android:layout_gravity="bottom|end"-->
+            <!--app:srcCompat="@drawable/ic_plus" />-->
+        <!--<com.google.android.material.floatingactionbutton.FloatingActionButton-->
+            <!--android:id="@+id/fab3"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="@dimen/subFabMargin"-->
+            <!--android:clickable="true"-->
+            <!--app:fabSize="mini"-->
+            <!--android:layout_gravity="bottom|end"-->
+            <!--app:srcCompat="@drawable/ic_plus" />-->
+        <!--<com.google.android.material.floatingactionbutton.FloatingActionButton-->
+            <!--android:id="@+id/fab2"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="@dimen/subFabMargin"-->
+            <!--android:clickable="true"-->
+            <!--app:fabSize="mini"-->
+            <!--android:layout_gravity="bottom|end"-->
+            <!--app:srcCompat="@drawable/ic_plus" />-->
+        <!--<com.google.android.material.floatingactionbutton.FloatingActionButton-->
+            <!--android:id="@+id/fab1"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="@dimen/subFabMargin"-->
+            <!--android:clickable="true"-->
+            <!--app:fabSize="mini"-->
+            <!--android:layout_gravity="bottom|end"-->
+            <!--app:srcCompat="@drawable/ic_plus" />-->
+        <!--<com.google.android.material.floatingactionbutton.FloatingActionButton-->
+            <!--android:id="@+id/fabMain"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="@dimen/fabMargin"-->
+            <!--android:clickable="true"-->
+            <!--app:fabSize="normal"-->
+            <!--app:layout_behavior="apps.lda.com.getter.customViews.FABBehaviour"-->
+            <!--android:layout_gravity="bottom|end"-->
+            <!--app:srcCompat="@drawable/ic_plus" />-->
+
+
+    <!--</androidx.coordinatorlayout.widget.CoordinatorLayout>-->
 
 
 </LinearLayout>

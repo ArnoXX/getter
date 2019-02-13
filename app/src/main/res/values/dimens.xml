@@ -28,6 +28,14 @@
 
     <dimen name="fabMargin">16dp</dimen>
 
+    <dimen name="subFabMargin">24dp</dimen>
+
+    <dimen name="standard_55">55dp</dimen>
+    <dimen name="standard_105">105dp</dimen>
+    <dimen name="standard_155">155dp</dimen>
+    <dimen name="standard_205">205dp</dimen>
+    // animation translations
+
     // sizes
     <dimen name="explorerElementIconWidth">22dp</dimen>
     <dimen name="explorerElementIconHeight">22dp</dimen>

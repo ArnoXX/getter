@@ -2,4 +2,9 @@
 <resources>
     <item type="id" name="explorer_element_icon"></item>
     <item type="id" name="explorer_element"></item>
+
+    <item type="id" name="fab1"></item>
+    <item type="id" name="fab2"></item>
+    <item type="id" name="fab3"></item>
+    <item type="id" name="fab4"></item>
 </resources>

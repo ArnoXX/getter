@@ -4,15 +4,14 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.animation.LinearInterpolator;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.ViewCompat;
 
-public class FABBehaviour extends FloatingActionButton.Behavior {
-    public FABBehaviour(Context context, AttributeSet attrs) {
+public class FABMenuBehaviour extends FloatingActionButton.Behavior {
+    public FABMenuBehaviour(Context context, AttributeSet attrs) {
         super();
     }
 
@@ -35,8 +34,6 @@ public class FABBehaviour extends FloatingActionButton.Behavior {
                     fab.setVisibility(View.INVISIBLE);
                 }
             });
-        } else if (child.getVisibility() == View.INVISIBLE && dyConsumed < 0) {
-            child.show();
         }
     }
 

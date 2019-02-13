@@ -1,19 +1,12 @@
 package apps.lda.com.getter;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.graphics.Typeface;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -23,15 +16,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.viewpager.widget.ViewPager;
 import apps.lda.com.getter.customViews.ExplorerCoordinator;
-import apps.lda.com.getter.customViews.ExplorerElement;
-import apps.lda.com.getter.customViews.ExplorerElementIcon;
 import apps.lda.com.getter.customViews.ExplorerElementsScroll;
 import apps.lda.com.getter.customViews.ExplorerMainScrollLines;
 import apps.lda.com.getter.customViews.ExplorerPager;
 import apps.lda.com.getter.customViews.ExplorerPagerAdapter;
-import apps.lda.com.getter.utils.extraUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fab4;
     private boolean isFABOpen;
     private  ExplorerCoordinator coordinator;
+    private  FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,21 +58,24 @@ public class MainActivity extends AppCompatActivity {
 
         children.add (new ExplorerElementsScroll (this, new ExplorerMainScrollLines (this, coord_params, 30, getWindowManager ().getDefaultDisplay (), pager, adapter), coord_params));
         coordinator = new ExplorerCoordinator (this, children);
-        ExplorerCoordinator fabMenu = (ExplorerCoordinator) inflater.inflate (R.layout.fab_menu, coordinator, true);
-        FloatingActionButton fab = (FloatingActionButton) inflater.inflate(R.layout.main_fab, coordinator, false);
+        fab1 = (FloatingActionButton) inflater.inflate (R.layout.sub_fab, coordinator, false);
+        fab2 = (FloatingActionButton) inflater.inflate (R.layout.sub_fab, coordinator, false);
+        fab3 = (FloatingActionButton) inflater.inflate (R.layout.sub_fab, coordinator, false);
+        fab4 = (FloatingActionButton) inflater.inflate (R.layout.sub_fab, coordinator, false);
+        fab = (FloatingActionButton) inflater.inflate(R.layout.main_fab, coordinator, false);
 
 
 
         // ----------
 
-        fab1 =  findViewById(R.id.fab1);
-         fab2 =  findViewById(R.id.fab2);
-         fab3 =  findViewById(R.id.fab3);
-         fab4 = findViewById(R.id.fab4);
+//        fab1 =  findViewById(R.id.fab1);
+//         fab2 =  findViewById(R.id.fab2);
+//         fab3 =  findViewById(R.id.fab3);
+//         fab4 = findViewById(R.id.fab4);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!isFABOpen){
+                if(fab1.getVisibility() == View.INVISIBLE){
                     showFABMenu();
                 }else{
                     closeFABMenu();
@@ -91,23 +84,45 @@ public class MainActivity extends AppCompatActivity {
         });
         adapter.addView (coordinator, 0);
         adapter.notifyDataSetChanged();
+
+        coordinator.addView (fab1);
+        coordinator.addView (fab2);
+        coordinator.addView (fab3);
+        coordinator.addView (fab4);
         coordinator.addView (fab);
 
     }
+    @SuppressLint("RestrictedApi")
     private void showFABMenu(){
         isFABOpen=true;
+        fab1.setVisibility(View.VISIBLE);
+        fab2.setVisibility(View.VISIBLE);
+        fab3.setVisibility(View.VISIBLE);
+        fab4.setVisibility(View.VISIBLE);
+
         fab1.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
         fab2.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
         fab3.animate().translationY(-getResources().getDimension(R.dimen.standard_155));
         fab4.animate().translationY(-getResources().getDimension(R.dimen.standard_205));
     }
-
+    @SuppressLint("RestrictedApi")
     private void closeFABMenu(){
         isFABOpen=false;
+
+
+
         fab1.animate().translationY(0);
+        fab1.setVisibility(View.INVISIBLE);
         fab2.animate().translationY(0);
         fab3.animate().translationY(0);
         fab4.animate().translationY(0);
+
+
+        fab2.setVisibility(View.INVISIBLE);
+        fab3.setVisibility(View.INVISIBLE);
+        fab4.setVisibility(View.INVISIBLE);
+
+
     }
     public void addView (View newPage)
     {

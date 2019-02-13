@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.floatingactionbutton.FloatingActionButton
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.floatingactionbutton.FloatingActionButton xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_gravity="bottom|end"
     android:layout_margin="@dimen/fabMargin"
     android:clickable="true"
     app:fabSize="normal"
-    app:layout_behavior="apps.lda.com.getter.customViews.FABBehaviour"
-    android:layout_gravity="bottom|end"
-    app:srcCompat="@drawable/ic_plus">
+    android:src="@drawable/ic_plus"
+    app:layout_behavior="apps.lda.com.getter.customViews.FABBehaviour">
 
 </com.google.android.material.floatingactionbutton.FloatingActionButton>

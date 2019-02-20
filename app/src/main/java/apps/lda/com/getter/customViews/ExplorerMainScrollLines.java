@@ -21,6 +21,8 @@ import androidx.viewpager.widget.ViewPager;
 import apps.lda.com.getter.R;
 import apps.lda.com.getter.utils.extraUtils;
 
+//TODO replace with RecyclerView
+
 public class ExplorerMainScrollLines extends LinearLayout {
 
     private ViewGroup.LayoutParams params;
@@ -102,7 +104,8 @@ public class ExplorerMainScrollLines extends LinearLayout {
                                 removeView (adapter.getView (i));
                                 i--;
                             }
-                            adapter.addView (new ExplorerElementsScroll (context, new ExplorerMainScrollLines (context, scroll_params, 10, display, pager, adapter), scroll_params));
+
+                            adapter.addView ( new ExplorerCoordinator (context, new ExplorerElementsScroll (context, new ExplorerMainScrollLines (context, scroll_params, 30, display, pager, adapter), scroll_params)));
                             adapter.notifyDataSetChanged();
                         v.setElevation (0);
                         return true;

@@ -31,7 +31,6 @@ public class FABBehaviour extends FloatingActionButton.Behavior {
                 @Override
                 public void onHidden(FloatingActionButton fab) {
                     super.onHidden(fab);
-                    fab.animate().translationY(0);
                     fab.setVisibility(View.INVISIBLE);
                 }
             });

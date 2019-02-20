@@ -35,6 +35,9 @@ public class FABMenuBehaviour extends FloatingActionButton.Behavior {
                 }
             });
         }
+        else if (child.getVisibility() == View.INVISIBLE && dyConsumed < 0) {
+            child.show();
+        }
     }
 
     @Override

@@ -102,7 +102,7 @@ public class ExplorerMainScrollLines extends LinearLayout {
                                 i--;
                             }
 
-                            adapter.addView ( new ExplorerCoordinator (context));
+                            //adapter.addView ( new ExplorerCoordinator (context));
                             adapter.notifyDataSetChanged();
                         v.setElevation (0);
                         return true;

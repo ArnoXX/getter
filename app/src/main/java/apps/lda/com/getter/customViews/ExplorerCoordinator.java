@@ -2,32 +2,45 @@ package apps.lda.com.getter.customViews;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import apps.lda.com.getter.R;
 
 public class ExplorerCoordinator extends CoordinatorLayout {
-    private ExplorerElementsScroll child ;
+    private ExplorerPager pager;
+    private ExplorerPagerAdapter adapter;
+
+    private ExplorerRecycler recycler;
+    private LinearLayoutManager manager;
+    private ExplorerRecyclerAdapter recyclerAdapter;
+
+    private CoordinatorLayout.LayoutParams lay_params;
+
     private FloatingActionButton mainFab;
     private FloatingActionButton subFab1;
     private FloatingActionButton subFab2;
     private FloatingActionButton subFab3;
     private FloatingActionButton subFab4;
 
+    private Context context;
+
     private LayoutInflater inflater;
-    public ExplorerCoordinator(@NonNull Context context, ExplorerElementsScroll child ) {
+    public ExplorerCoordinator(@NonNull Context context, ExplorerPager pager, ExplorerPagerAdapter adapter) {
         super (context);
         this.inflater = LayoutInflater.from(context);
+
+        this.context = context;
+
+        this.pager = pager;
+        this.adapter = adapter;
 
         this.subFab1 = (FloatingActionButton) inflater.inflate (R.layout.sub_fab, this, false);
         this.subFab2 = (FloatingActionButton) inflater.inflate (R.layout.sub_fab, this, false);
@@ -35,12 +48,21 @@ public class ExplorerCoordinator extends CoordinatorLayout {
         this.subFab4 = (FloatingActionButton) inflater.inflate (R.layout.sub_fab, this, false);
         this.mainFab = (FloatingActionButton) inflater.inflate(R.layout.main_fab, this, false);
 
-        this.child = child;
         init();
     }
     private void init(){
 
-            this.addView (this.child);
+        this.recycler = new ExplorerRecycler(this.context);
+
+        this.manager = new LinearLayoutManager(this.context);
+        this.recycler.setLayoutManager(this.manager);
+
+        this.recycler.setItemAnimator(new DefaultItemAnimator());
+
+        this.recyclerAdapter = new ExplorerRecyclerAdapter(40, this.pager, this.adapter);
+        this.recycler.setAdapter(this.recyclerAdapter);
+
+        this.lay_params = new CoordinatorLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         this.addView (this.subFab1);
         this.addView (this.subFab2);

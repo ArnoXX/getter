@@ -4,15 +4,11 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnticipateOvershootInterpolator;
 import android.widget.RelativeLayout;
 
-import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 import apps.lda.com.getter.R;
-import apps.lda.com.getter.utils.extraUtils;
 
 public class ExplorerElement extends RelativeLayout {
     private ViewGroup.LayoutParams params;
@@ -59,7 +55,7 @@ public class ExplorerElement extends RelativeLayout {
     }
     public AnimatorSet getElemAnimator(){
         AnimatorSet set = new AnimatorSet ();
-        set.play (this.alpha).with (this.elevationAnim);
+        set.play (this.alpha).before (this.elevationAnim);
         return set;
     }
 }

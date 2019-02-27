@@ -1,7 +1,6 @@
 package apps.lda.com.getter.customViews;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -10,12 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.viewpager.widget.ViewPager;
 import apps.lda.com.getter.R;
@@ -105,7 +102,7 @@ public class ExplorerMainScrollLines extends LinearLayout {
                                 i--;
                             }
 
-                            adapter.addView ( new ExplorerCoordinator (context, new ExplorerElementsScroll (context, new ExplorerMainScrollLines (context, scroll_params, 30, display, pager, adapter), scroll_params)));
+                            adapter.addView ( new ExplorerCoordinator (context));
                             adapter.notifyDataSetChanged();
                         v.setElevation (0);
                         return true;

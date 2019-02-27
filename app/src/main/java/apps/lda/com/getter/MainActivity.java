@@ -1,24 +1,14 @@
 package apps.lda.com.getter;
 
-import android.annotation.SuppressLint;
 import android.graphics.Typeface;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.appcompat.app.AppCompatActivity;
 import apps.lda.com.getter.customViews.ExplorerCoordinator;
-import apps.lda.com.getter.customViews.ExplorerElementsScroll;
-import apps.lda.com.getter.customViews.ExplorerMainScrollLines;
 import apps.lda.com.getter.customViews.ExplorerPager;
 import apps.lda.com.getter.customViews.ExplorerPagerAdapter;
 
@@ -42,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_main);
         // TODO complete this shit
-        HashMap<String, ? extends ViewGroup.LayoutParams> params_set = new HashMap<> (); // TODO organize params hash table
         Typeface roboto_thin = Typeface.createFromAsset (getAssets(),
                 "fonts/roboto_thin.ttf");
 
@@ -53,12 +42,12 @@ public class MainActivity extends AppCompatActivity {
         pager.setAdapter(adapter);
 
 
-        // ----------
         // TODO complete
-        CoordinatorLayout.LayoutParams coord_params = new CoordinatorLayout.LayoutParams (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        coordinator = new ExplorerCoordinator (this, new ExplorerElementsScroll (this, new ExplorerMainScrollLines (this, coord_params, 30, getWindowManager ().getDefaultDisplay (), pager, adapter), coord_params));
-        // ----------
-        adapter.addView (coordinator, 0);
+        // CoordinatorLayout.LayoutParams coord_params = new CoordinatorLayout.LayoutParams (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        // coordinator = new ExplorerCoordinator (this, new ExplorerElementsScroll (this, new ExplorerMainScrollLines (this, coord_params, 30, getWindowManager ().getDefaultDisplay (), pager, adapter), coord_params));
+        //adapter.addView (coordinator, 0);
+
+
         adapter.notifyDataSetChanged();
 
     }

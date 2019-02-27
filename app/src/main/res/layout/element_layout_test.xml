@@ -2,10 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="331dp" android:layout_height="wrap_content"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
     android:background="@drawable/explorer_element_view_bg"
     android:elevation="@dimen/elevation"
-    android:layout_marginStart="16dp"
+    android:layout_marginStart="@dimen/explorerElementViewLeftMargin"
+    android:layout_marginEnd="@dimen/explorerElementViewRightMargin"
     android:layout_marginTop="10dp">
 
     <ImageButton
@@ -17,7 +18,8 @@
         app:srcCompat="@drawable/folder_drawable"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
-        android:foregroundGravity="center"/>
+        android:foregroundGravity="center"
+        android:backgroundTint="@color/transparent"/>
 
     <TextView
         android:id="@+id/textView"

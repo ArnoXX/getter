@@ -17,11 +17,11 @@ import apps.lda.com.getter.R;
 import apps.lda.com.getter.utils.extraUtils;
 
 
-public class ExplorerElementsScroll extends NestedScrollView {
+public class ExplorerElementsScroll_Deprecated extends NestedScrollView {
     private View child;
     private Context context;
     private ViewGroup.LayoutParams params;
-    public ExplorerElementsScroll(Context context, View child, ViewGroup.LayoutParams params) {
+    public ExplorerElementsScroll_Deprecated(Context context, View child, ViewGroup.LayoutParams params) {
         super (context);
         this.child = child;
         this.context = context;

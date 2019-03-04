@@ -3,6 +3,7 @@ package apps.lda.com.getter.customViews;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -12,7 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import apps.lda.com.getter.R;
+import apps.lda.com.getter.utils.extraUtils;
 
 public class ExplorerCoordinator extends CoordinatorLayout {
     private ExplorerPager pager;
@@ -64,6 +67,10 @@ public class ExplorerCoordinator extends CoordinatorLayout {
 
         this.lay_params = new CoordinatorLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
+        this.recycler.setLayoutParams(this.lay_params);
+
+        this.addView(this.recycler);
+
         this.addView (this.subFab1);
         this.addView (this.subFab2);
         this.addView (this.subFab3);
@@ -78,6 +85,42 @@ public class ExplorerCoordinator extends CoordinatorLayout {
                 }else{
                     closeFABMenu();
                 }
+            }
+        });
+
+        this.recycler.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent event) {
+                if(event.getAction () == MotionEvent.ACTION_DOWN){
+                    recyclerAdapter.setPressed(true);
+                    int i = adapter.getCount () - 1;
+                    while(i > adapter.current){
+                        removeView (adapter.getView (i));
+                        i--;
+                    }
+                    adapter.addView ( new ExplorerCoordinator (context, pager, adapter));
+                    adapter.notifyDataSetChanged();
+                    return true;
+                } else if (event.getAction () == MotionEvent.ACTION_UP){
+                    recyclerAdapter.setPressed(false);
+                    int i = adapter.getCount ( ) - 1;
+                    while (i > adapter.current) {
+                        removeView (adapter.getView (i));
+                        i--;
+                    }
+                    return true;
+                }
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent event) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
             }
         });
     }
@@ -105,5 +148,13 @@ public class ExplorerCoordinator extends CoordinatorLayout {
         this.subFab2.setVisibility(View.INVISIBLE);
         this.subFab3.setVisibility(View.INVISIBLE);
         this.subFab4.setVisibility(View.INVISIBLE);
+    }
+    public void removeView (View defunctPage)
+    {
+        int pageIndex = adapter.removeView (pager, defunctPage);
+        // You might want to choose what page to display, if the current page was "defunctPage".
+        if (pageIndex == adapter.getCount())
+            pageIndex--;
+        pager.setCurrentItem (pageIndex, true);
     }
 }

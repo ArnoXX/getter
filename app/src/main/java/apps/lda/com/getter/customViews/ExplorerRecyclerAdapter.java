@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import apps.lda.com.getter.R;
 import apps.lda.com.getter.utils.extraUtils;
 
 public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecyclerAdapter.ExplorerViewHolder> {
-    private ArrayList<ExplorerElement> mDataset = new ArrayList<>();
+    private ArrayList<RelativeLayout> mDataset = new ArrayList<>();
     private View v;
     private boolean pressed;
     private ExplorerPager pager;
@@ -36,6 +37,7 @@ public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecycl
 
         public ExplorerViewHolder(View v) {
             super(v);
+            view = v;
             textView = v.findViewById(R.id.textView);
             imageButton = v.findViewById(R.id.imageButton);
         }
@@ -55,11 +57,9 @@ public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecycl
         // create a new view
         v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.element_layout_test, parent, false);
-
-        animateElement(parent.getContext(), (ExplorerElement) v);
         ExplorerViewHolder vh = new ExplorerViewHolder(v);
 
-        this.mDataset.add((ExplorerElement) v);
+        this.mDataset.add((RelativeLayout) v);
 
         init(parent.getContext());
 
@@ -73,6 +73,18 @@ public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecycl
         // - replace the contents of the view with that element
 //        holder.textView.setText(mDataset.get(position));
 
+        holder.view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction () == MotionEvent.ACTION_DOWN){
+                    v.setElevation(0);
+                } else if(event.getAction () == MotionEvent.ACTION_UP){
+                    v.setElevation(extraUtils.fromDpToPx (v.getContext().getResources().getDimension (R.dimen.elevation)));
+                }
+                return false;
+            }
+        });
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -84,38 +96,6 @@ public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecycl
     public void init(final Context ctx){
 
         // listening for
-
-        for (final View elem : this.mDataset){
-            elem.setOnTouchListener (new View.OnTouchListener ( ) {
-                @Override
-                public boolean onTouch (View v, MotionEvent event) {
-                    if(event.getAction () == MotionEvent.ACTION_DOWN){
-                        resetElevs(ctx);
-                        pressed = true;
-                        int i = adapter.getCount () - 1;
-                        while(i > adapter.current){
-                            removeView (adapter.getView (i));
-                            i--;
-                        }
-                        //adapter.addView ( new ExplorerCoordinator (ctx));
-                        adapter.notifyDataSetChanged();
-                        v.setElevation (0);
-                        return true;
-                    } else if (event.getAction () == MotionEvent.ACTION_UP){
-                        pressed = false;
-                        resetElevs (ctx);
-                        v.setElevation (extraUtils.fromDpToPx (ctx.getResources ().getDimension (R.dimen.elevation)));
-                        int i = adapter.getCount ( ) - 1;
-                        while (i > adapter.current) {
-                            removeView (adapter.getView (i));
-                            i--;
-                        }
-                        return true;
-                    }
-                    return false;
-                }
-            });
-        }
 
 
         pager.addOnPageChangeListener (new ViewPager.OnPageChangeListener ( ) {
@@ -138,11 +118,6 @@ public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecycl
                             removeView (adapter.getView (i));
                             i--;
                         }
-                    } else if(adapter.current > adapter.previous){
-                        for (ExplorerElement elem : mDataset) {
-                            animateElement(ctx, elem);
-                        }
-
                     }
 
                 }
@@ -153,8 +128,6 @@ public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecycl
 
             }
         });
-
-
     }
     final void resetElevs(Context ctx){
         for(View elem : this.mDataset){
@@ -169,23 +142,7 @@ public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecycl
             pageIndex--;
         pager.setCurrentItem (pageIndex, true);
     }
-
-    public void animateElement(Context ctx, ExplorerElement element){
-        ObjectAnimator alpha;
-        ObjectAnimator elevationAnim;
-
-
-        alpha = ObjectAnimator.ofFloat(element, "alpha",0f, 1f);
-        alpha.setStartDelay (0);
-        alpha.setDuration(30);
-
-        elevationAnim = ObjectAnimator.ofFloat(element, "elevation", 0f, ctx.getResources ().getDimension (R.dimen.elevation));
-        elevationAnim.setStartDelay (0);
-        elevationAnim.setDuration(120);
-
-        AnimatorSet set = new AnimatorSet ();
-        set.play (alpha).before (elevationAnim);
-
-        set.start();
+    public void setPressed(boolean prsd){
+        this.pressed = prsd;
     }
 }

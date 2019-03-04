@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO complete
         // CoordinatorLayout.LayoutParams coord_params = new CoordinatorLayout.LayoutParams (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        // coordinator = new ExplorerCoordinator (this, new ExplorerElementsScroll (this, new ExplorerMainScrollLines (this, coord_params, 30, getWindowManager ().getDefaultDisplay (), pager, adapter), coord_params));
-        //adapter.addView (coordinator, 0);
+        coordinator = new ExplorerCoordinator (this, pager, adapter);
+        adapter.addView (coordinator, 0);
 
 
         adapter.notifyDataSetChanged();

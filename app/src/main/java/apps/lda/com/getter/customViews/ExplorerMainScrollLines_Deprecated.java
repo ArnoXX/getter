@@ -20,7 +20,7 @@ import apps.lda.com.getter.utils.extraUtils;
 
 //TODO replace with RecyclerView
 
-public class ExplorerMainScrollLines extends LinearLayout {
+public class ExplorerMainScrollLines_Deprecated extends LinearLayout {
 
     private ViewGroup.LayoutParams params;
     private Context context;
@@ -33,7 +33,7 @@ public class ExplorerMainScrollLines extends LinearLayout {
     private boolean pressed = false;
     private NestedScrollView.LayoutParams scroll_params = new NestedScrollView.LayoutParams (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-    public ExplorerMainScrollLines(Context context, ViewGroup.LayoutParams params, int lines, Display display, ExplorerPager pager, ExplorerPagerAdapter adapter) {
+    public ExplorerMainScrollLines_Deprecated(Context context, ViewGroup.LayoutParams params, int lines, Display display, ExplorerPager pager, ExplorerPagerAdapter adapter) {
         super (context);
         this.params = params;
         this.context = context;

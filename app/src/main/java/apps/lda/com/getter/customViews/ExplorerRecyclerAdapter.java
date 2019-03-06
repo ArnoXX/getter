@@ -1,10 +1,7 @@
 package apps.lda.com.getter.customViews;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -17,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import apps.lda.com.getter.R;
 import apps.lda.com.getter.utils.extraUtils;
+
+import static androidx.viewpager.widget.ViewPager.SCROLL_STATE_IDLE;
 
 public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecyclerAdapter.ExplorerViewHolder> {
     private ArrayList<RelativeLayout> mDataset = new ArrayList<>();
@@ -73,17 +72,18 @@ public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecycl
         // - replace the contents of the view with that element
 //        holder.textView.setText(mDataset.get(position));
 
-        holder.view.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction () == MotionEvent.ACTION_DOWN){
-                    v.setElevation(0);
-                } else if(event.getAction () == MotionEvent.ACTION_UP){
-                    v.setElevation(extraUtils.fromDpToPx (v.getContext().getResources().getDimension (R.dimen.elevation)));
-                }
-                return false;
-            }
-        });
+//        holder.view.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                if(event.getAction () == MotionEvent.ACTION_DOWN){
+//                    v.setElevation(0);
+//                } else if(event.getAction () == MotionEvent.ACTION_UP){
+//                    v.setElevation(extraUtils.fromDpToPx (v.getContext().getResources().getDimension (R.dimen.elevation)));
+//                    resetElevs(v.getContext());
+//                }
+//                return false;
+//            }
+//        });
 
     }
 
@@ -112,6 +112,7 @@ public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecycl
                     adapter.current = position;
                     adapter.label.setText (String.format ("Count: %d", adapter.getCount ()));
                     adapter.label2.setText (String.format ("Current: %d", adapter.current));
+                    resetElevs(ctx);
                     if (adapter.current < adapter.previous) {
                         int i = adapter.getCount ( ) - 1;
                         while (i > adapter.current) {
@@ -125,7 +126,14 @@ public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecycl
             }
             @Override
             public void onPageScrollStateChanged(int state) {
-
+                if(state == SCROLL_STATE_IDLE){
+                    resetElevs(ctx);
+                    int i = adapter.getCount ( ) - 1;
+                    while (i > adapter.current) {
+                        removeView (adapter.getView (i));
+                        i--;
+                    }
+                }
             }
         });
     }

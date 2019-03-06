@@ -27,6 +27,8 @@ public class ExplorerCoordinator extends CoordinatorLayout {
 
     private CoordinatorLayout.LayoutParams lay_params;
 
+    private View child;
+
     private FloatingActionButton mainFab;
     private FloatingActionButton subFab1;
     private FloatingActionButton subFab2;
@@ -91,7 +93,11 @@ public class ExplorerCoordinator extends CoordinatorLayout {
         this.recycler.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent event) {
-                if(event.getAction () == MotionEvent.ACTION_DOWN){
+                if(child == null){
+                    child =  rv.findChildViewUnder(event.getX(),event.getY());
+                }
+                if(event.getAction () == MotionEvent.ACTION_DOWN && child != null){
+                    child.setElevation(0);
                     recyclerAdapter.setPressed(true);
                     int i = adapter.getCount () - 1;
                     while(i > adapter.current){
@@ -101,22 +107,28 @@ public class ExplorerCoordinator extends CoordinatorLayout {
                     adapter.addView ( new ExplorerCoordinator (context, pager, adapter));
                     adapter.notifyDataSetChanged();
                     return true;
-                } else if (event.getAction () == MotionEvent.ACTION_UP){
+                } else if (event.getAction () == MotionEvent.ACTION_UP && child != null){
+                    child.setElevation(extraUtils.fromDpToPx (child.getContext().getResources().getDimension (R.dimen.elevation)));
                     recyclerAdapter.setPressed(false);
                     int i = adapter.getCount ( ) - 1;
                     while (i > adapter.current) {
                         removeView (adapter.getView (i));
                         i--;
                     }
+                    child = null;
                     return true;
                 }
-                return false;
+                    return false;
             }
 
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent event) {
-
-            }
+                if(event.getAction () == MotionEvent.ACTION_DOWN && child != null) {
+                    child.setElevation(0);
+                } else if (event.getAction () == MotionEvent.ACTION_UP) {
+                    child.setElevation(extraUtils.fromDpToPx(child.getContext().getResources().getDimension(R.dimen.elevation)));
+                }
+                }
 
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {

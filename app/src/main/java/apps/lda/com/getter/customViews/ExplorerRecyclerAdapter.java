@@ -55,7 +55,7 @@ public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecycl
                                                                          int viewType) {
         // create a new view
         v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.element_layout_test, parent, false);
+                .inflate(R.layout.element_layout, parent, false);
         ExplorerViewHolder vh = new ExplorerViewHolder(v);
 
         this.mDataset.add((RelativeLayout) v);

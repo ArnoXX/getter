@@ -18,12 +18,14 @@ import apps.lda.com.getter.utils.extraUtils;
 import static androidx.viewpager.widget.ViewPager.SCROLL_STATE_IDLE;
 
 public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecyclerAdapter.ExplorerViewHolder> {
-    private ArrayList<RelativeLayout> mDataset = new ArrayList<>();
+    public ArrayList<RelativeLayout> mDataset = new ArrayList<>();
+
     private View v;
-    private boolean pressed;
+    public boolean pressed;
     private ExplorerPager pager;
     private ExplorerPagerAdapter adapter;
     private int amount;
+    private ExplorerCoordinator parent;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -43,10 +45,11 @@ public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecycl
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ExplorerRecyclerAdapter(int amount, ExplorerPager pager, ExplorerPagerAdapter adapter) {
+    public ExplorerRecyclerAdapter(int amount, ExplorerPager pager, ExplorerPagerAdapter adapter, ExplorerCoordinator parent) {
         this.pager = pager;
         this.adapter = adapter;
         this.amount = amount;
+        this.parent = parent;
     }
 
     // Create new views (invoked by the layout manager)
@@ -98,44 +101,45 @@ public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecycl
         // listening for
 
 
-        pager.addOnPageChangeListener (new ViewPager.OnPageChangeListener ( ) {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                if (pressed) {
-                    adapter.previous = adapter.current;
-                }
-            }
-            @Override
-            public void onPageSelected(int position) {
-
-                if(pressed) {
-                    adapter.current = position;
-                    adapter.label.setText (String.format ("Count: %d", adapter.getCount ()));
-                    adapter.label2.setText (String.format ("Current: %d", adapter.current));
-                    resetElevs(ctx);
-                    if (adapter.current < adapter.previous) {
-                        int i = adapter.getCount ( ) - 1;
-                        while (i > adapter.current) {
-                            removeView (adapter.getView (i));
-                            i--;
-                        }
-                    }
-
-                }
-
-            }
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                if(state == SCROLL_STATE_IDLE){
-                    resetElevs(ctx);
-                    int i = adapter.getCount ( ) - 1;
-                    while (i > adapter.current) {
-                        removeView (adapter.getView (i));
-                        i--;
-                    }
-                }
-            }
-        });
+//        pager.addOnPageChangeListener (new ViewPager.OnPageChangeListener ( ) {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//                if (pressed) {
+//                    adapter.previous = adapter.current;
+//                }
+//            }
+//            @Override
+//            public void onPageSelected(int position) {
+//
+//                if(pressed) {
+//                    adapter.current = position;
+//                    adapter.label.setText (String.format ("Count: %d", adapter.getCount ()));
+//                    adapter.label2.setText (String.format ("Current: %d", adapter.current));
+//                    resetElevs(ctx);
+//                    if (adapter.current < adapter.previous) {
+//                        int i = adapter.getCount ( ) - 1;
+//                        while (i > adapter.current) {
+//                            removeView (adapter.getView (i));
+//                            i--;
+//                        }
+//                    }
+//
+//                }
+//
+//            }
+//            @Override
+//            public void onPageScrollStateChanged(int state) {
+//                if(state == SCROLL_STATE_IDLE){
+//                    resetElevs(ctx);
+//                    int i = adapter.getCount ( ) - 1;
+//                    while (i > adapter.current) {
+//                        removeView (adapter.getView (i));
+//                        i--;
+//                    }
+//                    parent.child = null;
+//                }
+//            }
+//        });
     }
     final void resetElevs(Context ctx){
         for(View elem : this.mDataset){

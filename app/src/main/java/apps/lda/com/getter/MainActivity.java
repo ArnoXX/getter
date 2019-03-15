@@ -46,9 +46,11 @@ public class MainActivity extends AppCompatActivity {
         // CoordinatorLayout.LayoutParams coord_params = new CoordinatorLayout.LayoutParams (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         coordinator = new ExplorerCoordinator (this, pager, adapter);
         adapter.addView (coordinator, 0);
-
-
         adapter.notifyDataSetChanged();
+        if(pager.getAdapter() != null){
+            pager.launchListener();
+        }
+
 
     }
     public void addView (View newPage)

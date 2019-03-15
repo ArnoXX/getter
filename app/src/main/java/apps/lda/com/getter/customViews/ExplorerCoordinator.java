@@ -23,11 +23,11 @@ public class ExplorerCoordinator extends CoordinatorLayout {
 
     private ExplorerRecycler recycler;
     private LinearLayoutManager manager;
-    private ExplorerRecyclerAdapter recyclerAdapter;
+    public ExplorerRecyclerAdapter recyclerAdapter;
 
     private CoordinatorLayout.LayoutParams lay_params;
 
-    private View child;
+    public View child;
 
     private FloatingActionButton mainFab;
     private FloatingActionButton subFab1;
@@ -64,7 +64,7 @@ public class ExplorerCoordinator extends CoordinatorLayout {
 
         this.recycler.setItemAnimator(new DefaultItemAnimator());
 
-        this.recyclerAdapter = new ExplorerRecyclerAdapter(40, this.pager, this.adapter);
+        this.recyclerAdapter = new ExplorerRecyclerAdapter(40, this.pager, this.adapter, this);
         this.recycler.setAdapter(this.recyclerAdapter);
 
         this.lay_params = new CoordinatorLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -127,6 +127,7 @@ public class ExplorerCoordinator extends CoordinatorLayout {
                     child.setElevation(0);
                 } else if (event.getAction () == MotionEvent.ACTION_UP) {
                     child.setElevation(extraUtils.fromDpToPx(child.getContext().getResources().getDimension(R.dimen.elevation)));
+                    child = null;
                 }
                 }
 

@@ -164,10 +164,11 @@ public class ExplorerCoordinator extends CoordinatorLayout {
     }
     public void removeView (View defunctPage)
     {
-        int pageIndex = adapter.removeView (pager, defunctPage);
+        //int pageIndex =
+        adapter.removeView (pager, defunctPage);
         // You might want to choose what page to display, if the current page was "defunctPage".
-        if (pageIndex == adapter.getCount())
-            pageIndex--;
-        pager.setCurrentItem (pageIndex, true);
+//        if (pageIndex == adapter.getCount())
+//            pageIndex--;
+//        pager.setCurrentItem (pageIndex, true);
     }
 }

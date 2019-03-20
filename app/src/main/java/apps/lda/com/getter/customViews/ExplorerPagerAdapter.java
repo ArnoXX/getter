@@ -99,16 +99,16 @@ public class ExplorerPagerAdapter extends PagerAdapter {
     // Removes "view" from "views".
     // Retuns position of removed view.
     // The app should call this to remove pages; not used by ViewPager.
-    public int removeView (ViewPager pager, View v)
+    public void removeView (ViewPager pager, View v)
     {
-        return removeView (pager, views.indexOf (v));
+       removeView (pager, views.indexOf (v));
     }
 
     //-----------------------------------------------------------------------------
     // Removes the "view" at "position" from "views".
     // Retuns position of removed view.
     // The app should call this to remove pages; not used by ViewPager.
-    public int removeView (ViewPager pager, int position)
+    public void removeView (ViewPager pager, int position)
     {
         // ViewPager doesn't have a delete method; the closest is to set the adapter
         // again.  When doing so, it deletes all its views.  Then we can delete the view
@@ -116,11 +116,10 @@ public class ExplorerPagerAdapter extends PagerAdapter {
         // that we set the adapter to null before removing the view from "views" - that's
         // because while ViewPager deletes all its views, it will call destroyItem which
         // will in turn cause a null pointer ref.
-        pager.setAdapter (null);
+        //pager.setAdapter (null);
         views.remove (position);
-        pager.setAdapter (this);
+        //pager.setAdapter (this);
 
-        return position;
     }
 
     //-----------------------------------------------------------------------------

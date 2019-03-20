@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         pager.setAdapter(adapter);
 
 
-        // TODO complete
+        // TODO remake this with fragments
         // CoordinatorLayout.LayoutParams coord_params = new CoordinatorLayout.LayoutParams (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         coordinator = new ExplorerCoordinator (this, pager, adapter);
         adapter.addView (coordinator, 0);
@@ -64,11 +64,12 @@ public class MainActivity extends AppCompatActivity {
     // Here's what the app should do to remove a view from the ViewPager.
     public void removeView (View defunctPage)
     {
-        int pageIndex = adapter.removeView (pager, defunctPage);
+        //int pageIndex =
+                adapter.removeView (pager, defunctPage);
         // You might want to choose what page to display, if the current page was "defunctPage".
-        if (pageIndex == adapter.getCount())
-            pageIndex--;
-        pager.setCurrentItem (pageIndex);
+//        if (pageIndex == adapter.getCount())
+//            pageIndex--;
+//        pager.setCurrentItem (pageIndex);
     }
     //-----------------------------------------------------------------------------
     // Here's what the app should do to get the currently displayed page.

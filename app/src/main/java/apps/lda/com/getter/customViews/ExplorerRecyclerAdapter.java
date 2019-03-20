@@ -11,11 +11,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 import apps.lda.com.getter.R;
 import apps.lda.com.getter.utils.extraUtils;
-
-import static androidx.viewpager.widget.ViewPager.SCROLL_STATE_IDLE;
 
 public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecyclerAdapter.ExplorerViewHolder> {
     public ArrayList<RelativeLayout> mDataset = new ArrayList<>();
@@ -146,14 +143,14 @@ public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecycl
             elem.setElevation (extraUtils.fromDpToPx (ctx.getResources ().getDimension (R.dimen.elevation)));
         }
     }
-    public void removeView (View defunctPage)
-    {
-        int pageIndex = adapter.removeView (pager, defunctPage);
-        // You might want to choose what page to display, if the current page was "defunctPage".
-        if (pageIndex == adapter.getCount())
-            pageIndex--;
-        pager.setCurrentItem (pageIndex, true);
-    }
+//    public void removeView (View defunctPage)
+//    {
+//        int pageIndex = adapter.removeView (pager, defunctPage);
+//        // You might want to choose what page to display, if the current page was "defunctPage".
+//        if (pageIndex == adapter.getCount())
+//            pageIndex--;
+//        pager.setCurrentItem (pageIndex, true);
+//    }
     public void setPressed(boolean prsd){
         this.pressed = prsd;
     }

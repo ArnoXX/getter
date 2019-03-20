@@ -164,10 +164,10 @@ public class ExplorerMainScrollLines_Deprecated extends LinearLayout {
     }
     public void removeView (View defunctPage)
     {
-        int pageIndex = adapter.removeView (pager, defunctPage);
-        // You might want to choose what page to display, if the current page was "defunctPage".
-        if (pageIndex == adapter.getCount())
-            pageIndex--;
-        pager.setCurrentItem (pageIndex, true);
+//        int pageIndex = adapter.removeView (pager, defunctPage);
+//        // You might want to choose what page to display, if the current page was "defunctPage".
+//        if (pageIndex == adapter.getCount())
+//            pageIndex--;
+//        pager.setCurrentItem (pageIndex, true);
     }
 }

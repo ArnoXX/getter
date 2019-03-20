@@ -2,13 +2,12 @@ package apps.lda.com.getter.customViews;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
-import apps.lda.com.getter.R;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
+import apps.lda.com.getter.R;
 import apps.lda.com.getter.utils.extraUtils;
 
 public class ExplorerPager extends ViewPager {
@@ -71,10 +70,11 @@ public class ExplorerPager extends ViewPager {
     }
     public void removeView (View defunctPage)
     {
-        int pageIndex = adapter.removeView (this, defunctPage);
+        //int pageIndex =
+                adapter.removeView (this, defunctPage);
         // You might want to choose what page to display, if the current page was "defunctPage".
-        if (pageIndex == adapter.getCount())
-            pageIndex--;
-        this.setCurrentItem (pageIndex, true);
+//        if (pageIndex == adapter.getCount())
+//            pageIndex--;
+//        this.setCurrentItem (pageIndex, true);
     }
 }

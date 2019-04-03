@@ -19,8 +19,7 @@ public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecycl
 
     private View v;
     public boolean pressed;
-    private ExplorerPager pager;
-    private ExplorerPagerAdapter adapter;
+
     private int amount;
     private ExplorerCoordinator parent;
 
@@ -42,9 +41,7 @@ public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecycl
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ExplorerRecyclerAdapter(int amount, ExplorerPager pager, ExplorerPagerAdapter adapter, ExplorerCoordinator parent) {
-        this.pager = pager;
-        this.adapter = adapter;
+    public ExplorerRecyclerAdapter(int amount, ExplorerCoordinator parent) {
         this.amount = amount;
         this.parent = parent;
     }
@@ -70,20 +67,15 @@ public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecycl
     public void onBindViewHolder(ExplorerViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-//        holder.textView.setText(mDataset.get(position));
-
-//        holder.view.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                if(event.getAction () == MotionEvent.ACTION_DOWN){
-//                    v.setElevation(0);
-//                } else if(event.getAction () == MotionEvent.ACTION_UP){
-//                    v.setElevation(extraUtils.fromDpToPx (v.getContext().getResources().getDimension (R.dimen.elevation)));
-//                    resetElevs(v.getContext());
-//                }
-//                return false;
-//            }
-//        });
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                ExplorerCoordinator c = new ExplorerCoordinator (view.getContext(), pager, adapter);
+//                adapter.addView (c);
+//                adapter.notifyDataSetChanged();
+//                pager.setCurrentItem(adapter.getItemPosition (c), true );
+            }
+        });
 
     }
 
@@ -98,59 +90,12 @@ public class ExplorerRecyclerAdapter extends RecyclerView.Adapter<ExplorerRecycl
         // listening for
 
 
-//        pager.addOnPageChangeListener (new ViewPager.OnPageChangeListener ( ) {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//                if (pressed) {
-//                    adapter.previous = adapter.current;
-//                }
-//            }
-//            @Override
-//            public void onPageSelected(int position) {
-//
-//                if(pressed) {
-//                    adapter.current = position;
-//                    adapter.label.setText (String.format ("Count: %d", adapter.getCount ()));
-//                    adapter.label2.setText (String.format ("Current: %d", adapter.current));
-//                    resetElevs(ctx);
-//                    if (adapter.current < adapter.previous) {
-//                        int i = adapter.getCount ( ) - 1;
-//                        while (i > adapter.current) {
-//                            removeView (adapter.getView (i));
-//                            i--;
-//                        }
-//                    }
-//
-//                }
-//
-//            }
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//                if(state == SCROLL_STATE_IDLE){
-//                    resetElevs(ctx);
-//                    int i = adapter.getCount ( ) - 1;
-//                    while (i > adapter.current) {
-//                        removeView (adapter.getView (i));
-//                        i--;
-//                    }
-//                    parent.child = null;
-//                }
-//            }
-//        });
     }
     final void resetElevs(Context ctx){
         for(View elem : this.mDataset){
             elem.setElevation (extraUtils.fromDpToPx (ctx.getResources ().getDimension (R.dimen.elevation)));
         }
     }
-//    public void removeView (View defunctPage)
-//    {
-//        int pageIndex = adapter.removeView (pager, defunctPage);
-//        // You might want to choose what page to display, if the current page was "defunctPage".
-//        if (pageIndex == adapter.getCount())
-//            pageIndex--;
-//        pager.setCurrentItem (pageIndex, true);
-//    }
     public void setPressed(boolean prsd){
         this.pressed = prsd;
     }

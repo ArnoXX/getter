@@ -3,7 +3,6 @@ package apps.lda.com.getter.customViews;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -13,13 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import apps.lda.com.getter.R;
-import apps.lda.com.getter.utils.extraUtils;
 
 public class ExplorerCoordinator extends CoordinatorLayout {
-    private ExplorerPager pager;
-    private ExplorerPagerAdapter adapter;
 
     private ExplorerRecycler recycler;
     private LinearLayoutManager manager;
@@ -38,14 +33,11 @@ public class ExplorerCoordinator extends CoordinatorLayout {
     private Context context;
 
     private LayoutInflater inflater;
-    public ExplorerCoordinator(@NonNull Context context, ExplorerPager pager, ExplorerPagerAdapter adapter) {
+    public ExplorerCoordinator(@NonNull Context context) {
         super (context);
         this.inflater = LayoutInflater.from(context);
 
         this.context = context;
-
-        this.pager = pager;
-        this.adapter = adapter;
 
         this.subFab1 = (FloatingActionButton) inflater.inflate (R.layout.sub_fab, this, false);
         this.subFab2 = (FloatingActionButton) inflater.inflate (R.layout.sub_fab, this, false);
@@ -64,7 +56,7 @@ public class ExplorerCoordinator extends CoordinatorLayout {
 
         this.recycler.setItemAnimator(new DefaultItemAnimator());
 
-        this.recyclerAdapter = new ExplorerRecyclerAdapter(40, this.pager, this.adapter, this);
+        this.recyclerAdapter = new ExplorerRecyclerAdapter(40, this);
         this.recycler.setAdapter(this.recyclerAdapter);
 
         this.lay_params = new CoordinatorLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -90,52 +82,6 @@ public class ExplorerCoordinator extends CoordinatorLayout {
             }
         });
 
-        this.recycler.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent event) {
-                if(child == null){
-                    child =  rv.findChildViewUnder(event.getX(),event.getY());
-                }
-                if(event.getAction () == MotionEvent.ACTION_DOWN && child != null){
-                    child.setElevation(0);
-                    recyclerAdapter.setPressed(true);
-                    int i = adapter.getCount () - 1;
-                    while(i > adapter.current){
-                        removeView (adapter.getView (i));
-                        i--;
-                    }
-                    adapter.addView ( new ExplorerCoordinator (context, pager, adapter));
-                    adapter.notifyDataSetChanged();
-                    return true;
-                } else if (event.getAction () == MotionEvent.ACTION_UP && child != null){
-                    child.setElevation(extraUtils.fromDpToPx (child.getContext().getResources().getDimension (R.dimen.elevation)));
-                    recyclerAdapter.setPressed(false);
-                    int i = adapter.getCount ( ) - 1;
-                    while (i > adapter.current) {
-                        removeView (adapter.getView (i));
-                        i--;
-                    }
-                    child = null;
-                    return true;
-                }
-                    return false;
-            }
-
-            @Override
-            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent event) {
-                if(event.getAction () == MotionEvent.ACTION_DOWN && child != null) {
-                    child.setElevation(0);
-                } else if (event.getAction () == MotionEvent.ACTION_UP) {
-                    child.setElevation(extraUtils.fromDpToPx(child.getContext().getResources().getDimension(R.dimen.elevation)));
-                    child = null;
-                }
-                }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
-        });
     }
 
     @SuppressLint("RestrictedApi")
@@ -161,14 +107,5 @@ public class ExplorerCoordinator extends CoordinatorLayout {
         this.subFab2.setVisibility(View.INVISIBLE);
         this.subFab3.setVisibility(View.INVISIBLE);
         this.subFab4.setVisibility(View.INVISIBLE);
-    }
-    public void removeView (View defunctPage)
-    {
-        //int pageIndex =
-        adapter.removeView (pager, defunctPage);
-        // You might want to choose what page to display, if the current page was "defunctPage".
-//        if (pageIndex == adapter.getCount())
-//            pageIndex--;
-//        pager.setCurrentItem (pageIndex, true);
     }
 }

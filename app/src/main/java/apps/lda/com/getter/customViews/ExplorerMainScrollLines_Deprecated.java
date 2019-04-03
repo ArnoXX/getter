@@ -28,12 +28,12 @@ public class ExplorerMainScrollLines_Deprecated extends LinearLayout {
     private ArrayList<ExplorerElement> elems;
     private Display display;
     private int lines;
-    private ExplorerPager pager;
-    private ExplorerPagerAdapter adapter;
+    private ExplorerPager_Deprecated pager;
+    private ExplorerRecycler.ExplorerPagerAdapter adapter;
     private boolean pressed = false;
     private NestedScrollView.LayoutParams scroll_params = new NestedScrollView.LayoutParams (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-    public ExplorerMainScrollLines_Deprecated(Context context, ViewGroup.LayoutParams params, int lines, Display display, ExplorerPager pager, ExplorerPagerAdapter adapter) {
+    public ExplorerMainScrollLines_Deprecated(Context context, ViewGroup.LayoutParams params, int lines, Display display, ExplorerPager_Deprecated pager, ExplorerRecycler.ExplorerPagerAdapter adapter) {
         super (context);
         this.params = params;
         this.context = context;

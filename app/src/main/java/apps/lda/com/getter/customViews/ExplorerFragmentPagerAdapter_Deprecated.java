@@ -7,16 +7,19 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
-import androidx.viewpager.widget.PagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-public class ExplorerPagerAdapter extends PagerAdapter {
+public class ExplorerFragmentPagerAdapter_Deprecated extends FragmentPagerAdapter {
     private ArrayList<View> views = new ArrayList<>();
     public TextView label;
     public TextView label2;
     public int previous = 0;
     public int current = 0;
-    public ExplorerPagerAdapter(TextView label, TextView label2){
+    public ExplorerFragmentPagerAdapter_Deprecated(TextView label, TextView label2, FragmentManager fm){
+        super(fm);
         this.label = label;
         this.label2 = label2;
         //this.label.setText (String.format ("%d", this.getCount ()));
@@ -33,6 +36,11 @@ public class ExplorerPagerAdapter extends PagerAdapter {
             return POSITION_NONE;
         else
             return index;
+    }
+
+    @Override
+    public Fragment getItem(int position) {
+        return null;
     }
 
     //-----------------------------------------------------------------------------
@@ -116,10 +124,9 @@ public class ExplorerPagerAdapter extends PagerAdapter {
         // that we set the adapter to null before removing the view from "views" - that's
         // because while ViewPager deletes all its views, it will call destroyItem which
         // will in turn cause a null pointer ref.
-        //pager.setAdapter (null);
+        pager.setAdapter (null);
         views.remove (position);
-        //pager.setAdapter (this);
-
+        pager.setAdapter (this);
     }
 
     //-----------------------------------------------------------------------------

@@ -10,13 +10,13 @@ import androidx.viewpager.widget.ViewPager;
 import apps.lda.com.getter.R;
 import apps.lda.com.getter.utils.extraUtils;
 
-public class ExplorerPager extends ViewPager {
-    private ExplorerPagerAdapter adapter;
-    public ExplorerPager(@NonNull Context ctx) {
+public class ExplorerPager_Deprecated extends ViewPager {
+    private ExplorerRecycler.ExplorerPagerAdapter adapter;
+    public ExplorerPager_Deprecated(@NonNull Context ctx) {
         super (ctx);
     }
 
-    public ExplorerPager(@NonNull Context ctx, @Nullable AttributeSet attrs) {
+    public ExplorerPager_Deprecated(@NonNull Context ctx, @Nullable AttributeSet attrs) {
         super (ctx, attrs);
 
 
@@ -27,18 +27,17 @@ public class ExplorerPager extends ViewPager {
         }
     }
     public void launchListener(){
-        this.adapter = (ExplorerPagerAdapter) getAdapter();
+        this.adapter = (ExplorerRecycler.ExplorerPagerAdapter) getAdapter();
         this.addOnPageChangeListener (new ViewPager.OnPageChangeListener ( ) {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                if (((ExplorerCoordinator) ((ExplorerPagerAdapter)getAdapter()).getView(getCurrentItem())).recyclerAdapter.pressed) {
                     adapter.previous = adapter.current;
-                }
+
             }
             @Override
             public void onPageSelected(int position) {
 
-                if(((ExplorerCoordinator) ((ExplorerPagerAdapter)getAdapter()).getView(getCurrentItem())).recyclerAdapter.pressed) {
+
                     adapter.current = position;
                     adapter.label.setText (String.format ("Count: %d", adapter.getCount ()));
                     adapter.label2.setText (String.format ("Current: %d", adapter.current));
@@ -51,20 +50,20 @@ public class ExplorerPager extends ViewPager {
                         }
                     }
 
-                }
+
 
             }
             @Override
             public void onPageScrollStateChanged(int state) {
-                if(state == SCROLL_STATE_IDLE){
-                    resetElevs(adapter.label.getContext());
-                    int i = adapter.getCount ( ) - 1;
-                    while (i > adapter.current) {
-                        removeView (adapter.getView (i));
-                        i--;
-                    }
-                    ((ExplorerCoordinator) ((ExplorerPagerAdapter)getAdapter()).getView(getCurrentItem())).child = null;
-                }
+//                if(state == SCROLL_STATE_IDLE){
+//                    resetElevs(adapter.label.getContext());
+//                    int i = adapter.getCount ( ) - 1;
+//                    while (i > adapter.current) {
+//                        removeView (adapter.getView (i));
+//                        i--;
+//                    }
+//                    ((ExplorerCoordinator) ((ExplorerPagerAdapter)getAdapter()).getView(getCurrentItem())).child = null;
+//                }
             }
         });
     }

@@ -1,22 +1,25 @@
 package apps.lda.com.getter;
 
+
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import apps.lda.com.getter.customViews.ExplorerCoordinator;
-import apps.lda.com.getter.customViews.ExplorerPager;
-import apps.lda.com.getter.customViews.ExplorerPagerAdapter;
+import apps.lda.com.getter.customViews.ExplorerFragment;
+import apps.lda.com.getter.customViews.ExplorerPager_Deprecated;
+import apps.lda.com.getter.customViews.ExplorerRecycler;
 
 public class MainActivity extends AppCompatActivity {
 
 
-    private ExplorerPagerAdapter adapter;
-    private ExplorerPager pager;
+    private ExplorerRecycler.ExplorerPagerAdapter adapter;
+    private ExplorerPager_Deprecated pager;
 //    private FloatingActionButton fab1;
 //    private FloatingActionButton fab2;
 //    private FloatingActionButton fab3;
@@ -36,53 +39,11 @@ public class MainActivity extends AppCompatActivity {
                 "fonts/roboto_thin.ttf");
 
         txt1 = (TextView) findViewById (R.id.breadcrumbsLine);
-        txt2 = (TextView) findViewById (R.id.breadcrumbsLine2);
-        adapter = new ExplorerPagerAdapter (txt1, txt2);
-        pager = findViewById(R.id.pager);
-        pager.setAdapter(adapter);
 
 
-        // TODO remake this with fragments
-        // CoordinatorLayout.LayoutParams coord_params = new CoordinatorLayout.LayoutParams (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        coordinator = new ExplorerCoordinator (this, pager, adapter);
-        adapter.addView (coordinator, 0);
-        adapter.notifyDataSetChanged();
-        if(pager.getAdapter() != null){
-            pager.launchListener();
-        }
+        Fragment fr = new ExplorerFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.main_frame, fr).commit();
 
-
-    }
-    public void addView (View newPage)
-    {
-        int pageIndex = adapter.addView (newPage);
-        // You might want to make "newPage" the currently displayed page:
-        pager.setCurrentItem (pageIndex, true);
-    }
-
-    //-----------------------------------------------------------------------------
-    // Here's what the app should do to remove a view from the ViewPager.
-    public void removeView (View defunctPage)
-    {
-        //int pageIndex =
-                adapter.removeView (pager, defunctPage);
-        // You might want to choose what page to display, if the current page was "defunctPage".
-//        if (pageIndex == adapter.getCount())
-//            pageIndex--;
-//        pager.setCurrentItem (pageIndex);
-    }
-    //-----------------------------------------------------------------------------
-    // Here's what the app should do to get the currently displayed page.
-    public View getCurrentPage ()
-    {
-        return adapter.getView (pager.getCurrentItem());
-    }
-
-    //-----------------------------------------------------------------------------
-    // Here's what the app should do to set the currently displayed page.  "pageToShow" must
-    // currently be in the adapter, or this will crash.
-    public void setCurrentPage (View pageToShow)
-    {
-        pager.setCurrentItem (adapter.getItemPosition (pageToShow), true);
     }
 }

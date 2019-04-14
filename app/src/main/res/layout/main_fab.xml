@@ -7,8 +7,8 @@
     android:layout_gravity="bottom|end"
     android:layout_margin="@dimen/fabMargin"
     android:clickable="true"
+    android:src="@drawable/ic_arrow_back_black_24dp"
     app:fabSize="normal"
-    android:src="@drawable/ic_plus"
     app:layout_behavior="apps.lda.com.getter.customViews.FABBehaviour">
 
 </com.google.android.material.floatingactionbutton.FloatingActionButton>

@@ -7,9 +7,9 @@
     android:layout_height="wrap_content"
     android:layout_gravity="bottom|end"
     android:layout_margin="@dimen/subFabMargin"
-    android:src="@android:drawable/ic_menu_compass"
+    android:src="@drawable/ic_arrow_back_black_24dp"
     android:visibility="invisible"
     app:layout_behavior="apps.lda.com.getter.customViews.FABMenuBehaviour"
-    app:fabSize="mini" >
+    app:fabSize="mini">
 
 </com.google.android.material.floatingactionbutton.FloatingActionButton>

@@ -1,0 +1,449 @@
+{
+  "root":{
+    "name":"root",
+    "children":{
+      "dirs":[
+        {
+          "name": "DCMI",
+          "children": {
+            "dirs": [
+              {
+                "name": "Camera",
+                "children": {
+                  "dirs": [
+
+                  ],
+                  "files":[
+                    {
+                      "name":"IMG_883020_994",
+                      "ext":"jpg"
+                    },
+                    {
+                      "name":"IMG_99372_996",
+                      "ext":"jpg"
+                    },
+                    {
+                      "name":"IMG_99554_993",
+                      "ext":"jpg"
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "Screenshots",
+                "children": {
+                  "dirs": [
+
+                  ],
+                  "files":[
+                    {
+                      "name":"Screenshot_k99303",
+                      "ext":"jpg"
+                    }
+                  ]
+                }
+              }
+            ],
+            "files":[
+              {
+                "name":"8d73jj",
+                "ext":"jpg"
+              },
+              {
+                "name":"3kk49ro4",
+                "ext":"jpg"
+              }
+            ]
+          }
+        },
+        {
+          "name":"Cardboard",
+          "children": {
+            "dirs": [
+
+            ],
+            "files":[
+
+            ]
+          }
+        },
+        {
+          "name":"Pictures",
+          "children": {
+            "dirs": [
+              {
+                "name":"Instagram",
+                "children": {
+                  "dirs":[
+
+                  ],
+                  "files":[
+                    {
+                      "name":"IMG_94905",
+                      "ext":"jpg"
+                    },
+                    {
+                      "name":"IMG_994030",
+                      "ext":"jpg"
+                    },
+                    {
+                      "name":"IMG_005993",
+                      "ext":"jpg"
+                    },
+                    {
+                      "name":"IMG_99473",
+                      "ext":"jpg"
+                    },
+                    {
+                      "name":"IMG_99938540",
+                      "ext":"jpg"
+                    }
+                  ]
+                }
+              },
+              {
+                "name":"Telegram X",
+                "children":{
+                  "dirs":[
+
+                  ],
+                  "files":[
+                    {
+                      "name":"IMG_94905",
+                      "ext":"jpg"
+                    },
+                    {
+                      "name":"IMG_994030",
+                      "ext":"jpg"
+                    },
+                    {
+                      "name":"IMG_005993",
+                      "ext":"jpg"
+                    },
+                    {
+                      "name":"IMG_99473",
+                      "ext":"jpg"
+                    },
+                    {
+                      "name":"IMG_99938540",
+                      "ext":"jpg"
+                    }
+                  ]
+                }
+              }
+            ],
+            "files":[
+
+            ]
+          }
+        },
+        {
+          "name":"Download",
+          "children": {
+            "dirs": [
+
+            ],
+            "files":[
+              {
+                "name":"jjdueo88ds",
+                "ext":"pdf"
+              },
+              {
+                "name":"jjeu472",
+                "ext":"pdf"
+              },
+              {
+                "name":"883jst",
+                "ext":"pdf"
+              },
+              {
+                "name":"iiituyee",
+                "ext":"mp3"
+              },
+              {
+                "name":"msctte",
+                "ext":"mp3"
+              },
+              {
+                "name":"jjdueo88ds",
+                "ext":"txt"
+              },
+              {
+                "name":"jjdueo88ds",
+                "ext":"mp4"
+              }
+            ]
+          }
+        },
+        {
+          "name":"Android",
+          "children": {
+            "dirs": [
+              {
+                "name":"data",
+                "children":{
+                  "dirs": [
+
+                  ],
+                  "files":[
+
+                  ]
+                }
+              },
+              {
+                "name":"obb",
+                "children":{
+                  "dirs": [
+
+                  ],
+                  "files":[
+
+                  ]
+                }
+              },
+              {
+                "name":"media",
+                "children":{
+                  "dirs": [
+
+                  ],
+                  "files":[
+
+                  ]
+                }
+              }
+            ],
+            "files":[
+
+            ]
+          }
+        },
+        {
+          "name":"documents",
+          "children": {
+            "dirs": [
+
+            ],
+            "files":[
+
+            ]
+          }
+        },
+        {
+          "name":"bluetooth",
+          "children": {
+            "dirs": [
+
+            ],
+            "files":[
+              {
+                "name":"DSC_7738",
+                "ext":"jpg"
+              }
+            ]
+          }
+        },
+        {
+          "name":"backups",
+          "children": {
+            "dirs": [
+              {
+                "name":"apps",
+                "children":{
+                  "dirs":[
+
+                  ],
+                  "files":[
+
+                  ]
+                }
+              },
+              {
+                "name":"system",
+                "children":{
+                  "dirs":[
+
+                  ],
+                  "files":[
+                    {
+                      "name":"_log_883",
+                      "ext":"log"
+                    }
+                  ]
+                }
+              }
+            ],
+            "files":[
+
+            ]
+          }
+        },
+        {
+          "name":"Fonts",
+          "children": {
+            "dirs": [
+
+            ],
+            "files":[
+
+            ]
+          }
+        },
+        {
+          "name":"MIUI",
+          "children": {
+            "dirs": [
+              {
+                "name":"music",
+                "children":{
+                  "dirs":[
+                    {
+                      "name":"album",
+                      "children":{
+                        "dirs":[
+
+                        ],
+                        "files":[
+
+                        ]
+                      }
+                    }
+                  ],
+                  "files":[
+
+                  ]
+                }
+              },
+              {
+                "name":"theme",
+                "children":{
+                  "dirs":[
+
+                  ],
+                  "files":[
+
+                  ]
+                }
+              },
+              {
+                "name":"wallpaper",
+                "children":{
+                  "dirs":[
+
+                  ],
+                  "files":[
+                    {
+                      "name":"7763",
+                      "ext":"jpg"
+                    },
+                    {
+                      "name":"iidnr7433",
+                      "ext":"jpg"
+                    }
+                  ]
+                }
+              }
+            ],
+            "files":[
+
+            ]
+          }
+        },
+        {
+          "name":"Movies",
+          "children": {
+            "dirs": [
+              {
+                "name":"Instagram",
+                "children": {
+                  "dirs": [
+
+                  ],
+                  "files":[
+
+                  ]
+                }
+              }
+            ],
+            "files":[
+
+            ]
+          }
+        },
+        {
+          "name":"VK",
+          "children": {
+            "dirs": [
+              {
+                "name":"Downloads",
+                "children": {
+                  "dirs": [
+
+                  ],
+                  "files":[
+
+                  ]
+                }
+              }
+            ],
+            "files":[
+
+            ]
+          }
+        },
+        {
+          "name":"Viber",
+          "children": {
+            "dirs": [
+              {
+                "name":"media",
+                "children": {
+                  "dirs": [
+                    {
+                      "name":"Viber Images",
+                      "children": {
+                        "dirs": [
+
+                        ],
+                        "files":[
+
+                        ]
+                      }
+                    },
+                    {
+                      "name":"Viber Videos",
+                      "children": {
+                        "dirs": [
+
+                        ],
+                        "files":[
+
+                        ]
+                      }
+                    }
+                  ],
+                  "files":[
+
+                  ]
+                }
+              }
+            ],
+            "files":[
+
+            ]
+          }
+        }
+      ],
+      "files":[
+        {
+          "name":"llsk772",
+          "ext":"docx"
+        },
+        {
+          "name":"pderw",
+          "ext":"pdf"
+        }
+      ]
+    }
+  }
+}
